@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { FoodlistComponent } from './foodlist/foodlist.component';
 import { RemoveWhiteSpacePipe } from './common/pipes/remove-white-space.pipe';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RemoveWhiteSpacePipe } from './common/pipes/remove-white-space.pipe';
     LoginComponent,
     HomeComponent,
     FoodlistComponent,
-    RemoveWhiteSpacePipe
+    RemoveWhiteSpacePipe,
+    CartComponent
   ],
   imports: [
     BrowserModule,

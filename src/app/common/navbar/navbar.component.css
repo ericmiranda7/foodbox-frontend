@@ -1,0 +1,9 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.navbar {
+    background-color: hsla(0, 100%, 50%, 0.884);
+}
+
+.navbar a {
+    color: white;
+}

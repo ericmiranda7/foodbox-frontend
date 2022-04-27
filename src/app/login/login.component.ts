@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../common/models/User';
 import { AuthService } from '../common/services/auth.service';
 
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   username: String = '';
   password: String = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
     // load from local storage here
@@ -26,7 +28,11 @@ export class LoginComponent implements OnInit {
           this.authService.setUser({ username: this.username, isAdmin: false })
         },
         error: (error) => console.log(error.error.message),
-        complete: () => console.log('login success!')
+        complete: () => {
+          // redirect to home
+          this.router.navigate([''])
+          console.log('login success!')
+        }
       })
   }
 

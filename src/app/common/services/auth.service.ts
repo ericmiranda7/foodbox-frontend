@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { User } from '../models/User';
 
 const baseUrl = 'http://localhost:8080/api/login';
@@ -9,10 +9,7 @@ const baseUrl = 'http://localhost:8080/api/login';
   providedIn: 'root'
 })
 export class AuthService {
-  user: User = {
-    username: '',
-    isAdmin: false
-  };
+  user: BehaviorSubject<User> = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user') as string) || {});
 
   constructor(private http: HttpClient) { }
 
@@ -34,8 +31,12 @@ export class AuthService {
   }
 
   setUser(user: User) {
-    this.user = user;
-    sessionStorage.setItem('user', JSON.stringify(this.user))
+    this.user.next(user)
+    localStorage.setItem('user', JSON.stringify(this.user.getValue()))
+  }
+
+  getUsername() {
+    return this.user.getValue().username;
   }
 
   checkLocalUser() {
@@ -43,5 +44,10 @@ export class AuthService {
       this.user = JSON.parse(sessionStorage.getItem('user') as string)
       console.log(this.user);
     }
+  }
+
+  logout() {
+    this.user.next({} as any)
+    localStorage.removeItem('user')
   }
 }

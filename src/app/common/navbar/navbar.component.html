@@ -1,8 +1,17 @@
-<div class="row p-1">
-    <div class="col flex-grow-1 align-self-center">
+<div class="row p-1 navbar">
+    <div class="col-auto">
         <a href="#">Home</a>
     </div>
+    <div class="col-auto flex-grow-1 align-self-center text-center">
+        <h1>Welcome to FoodBox 🤤</h1>
+    </div>
     <div class="col-auto">
-        <a routerLink="/login" class="align-self-center">Login</a>
+        <a (click)="onLogout()" routerLink="" *ngIf="this.username; else loginBlock">Logout</a>
+        <ng-template #loginBlock>
+            <a routerLink="/login" class="align-self-center">Login</a>
+        </ng-template>
+    </div>
+    <div class="col-auto">
+        <a routerLink="/cart"><i class="bi bi-cart" style="font-size: 1.2rem; color: white"></i></a>
     </div>
 </div>

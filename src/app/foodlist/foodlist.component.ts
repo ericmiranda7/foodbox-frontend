@@ -20,7 +20,7 @@ export class FoodlistComponent implements OnInit {
           this.foods = foods;
         },
         error: (err) => console.log(err),
-        complete: () => console.log(this.foods)
+        complete: () => { }
       })
   }
 
