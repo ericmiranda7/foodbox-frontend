@@ -5,7 +5,7 @@ import { Food } from '../models/Food';
   providedIn: 'root'
 })
 export class CartService {
-  items: Array<Food> = []
+  items: Array<Food> = [];
 
   constructor() { }
 
