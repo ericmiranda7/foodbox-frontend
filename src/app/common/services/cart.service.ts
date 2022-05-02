@@ -5,12 +5,27 @@ import { Food } from '../models/Food';
   providedIn: 'root'
 })
 export class CartService {
-  items: Array<Food> = [];
+  items: {
+    [key: string]: Food
+  } = {}
 
   constructor() { }
 
   add(food: Food): void {
-    console.log('add', food)
-    this.items.push(food);
+    if (this.items[food.name]?.qty) {
+      this.items[food.name].qty++;
+    }
+    else {
+      food.qty = 1;
+      this.items[food.name] = food;
+    }
+  }
+
+  getFoods(): Array<Food> {
+    return Object.values(this.items);
+  }
+
+  getFoodQty(): number {
+    return Object.keys(this.items).reduce((p, c) => p + this.items[c].qty, 0)
   }
 }

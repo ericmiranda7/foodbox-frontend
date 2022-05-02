@@ -5,7 +5,16 @@
                 Food items
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item" *ngFor="let food of cartService.items">{{food.name}} x{{food.stock}}</li>
+                <li class="list-group-item" *ngFor="let food of cartService.getFoods()">
+                    <div style="display: flex">
+                        <div style="flex-grow: 1">
+                            {{food.name}}
+                        </div>
+                        <div>
+                            x{{food.qty}}
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

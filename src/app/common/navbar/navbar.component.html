@@ -12,6 +12,7 @@
         </ng-template>
     </div>
     <div class="col-auto">
-        <a routerLink="/cart"><i class="bi bi-cart" style="font-size: 1.2rem; color: white"></i></a>
+        {{this.cartService.getFoodQty()}}<a routerLink="/cart"><i class="bi bi-cart"
+                style="font-size: 1.2rem; color: white"></i></a>
     </div>
 </div>
